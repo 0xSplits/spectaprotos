@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package metrics;
+option go_package = "./;metrics";
+
+import "pbf/metrics/counter.proto";
+import "pbf/metrics/gauge.proto";
+import "pbf/metrics/histogram.proto";
+
+service API {
+  rpc Counter(CounterI) returns (CounterO) {}
+  rpc Gauge(GaugeI) returns (GaugeO) {}
+  rpc Histogram(HistogramI) returns (HistogramO) {}
+}

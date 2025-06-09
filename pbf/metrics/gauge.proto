@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package metrics;
+option go_package = "./;metrics";
+
+import "pbf/metrics/common.proto";
+
+// GaugeI is the input for updating gauges.
+message GaugeI {
+  repeated metrics.Action action = 100;
+}
+
+// GaugeO is the output for updating gauges.
+message GaugeO {
+  repeated metrics.Result result = 100;
+}

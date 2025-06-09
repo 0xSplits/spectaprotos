@@ -1,0 +1,59 @@
+syntax = "proto3";
+
+package metrics;
+option go_package = "./;metrics";
+
+// Action is the request body for any given action.
+//
+//     {
+//         "labels": {
+//             "key": "value"
+//         },
+//         "metric": "teams_bridge_error_total",
+//         "values": [
+//             1
+//         ]
+//     }
+//
+message Action {
+  // labels is the optional set of key-value pairs whitelisted per metric.
+  // Providing labels that are not whitelisted causes the entire RPC to be
+  // rejected on a request level.
+  map<string, string> labels = 100;
+  // metric is the required metric name in camel case format. Providing metric
+  // names that are not whitelisted causes the entire RPC to be rejected on a
+  // request level. Metric names must not be longer than 255 characters.
+  string metric = 200;
+  // number is the required floating point value that should be applied to the
+  // timeseries specified by the labels and metric properties. Negative values
+  // may cause the entire RPC to be rejected on a per metric basis.
+  double number = 300;
+}
+
+message Reason {
+  string info = 100;
+  string kind = 200;
+}
+
+// Result is the response body for any given action.
+//
+//     {
+//         "reason": {
+//             "desc": "This is why the request was rejected.",
+//             "kind": "someErrorCode"
+//         },
+//         "status": "failure"
+//     }
+//
+message Result {
+  // reason is the optional feedback that the backend provides in case of
+  // action failure.
+  optional Reason reason = 100;
+  // status is the final state of the executed action.
+  //
+  //     success, the given actions were executed successfully
+  //
+  //     failure, the given actions were rejected for reasons
+  //
+  string status = 200;
+}

@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package metrics;
+option go_package = "./;metrics";
+
+import "pbf/metrics/common.proto";
+
+// CounterI is the input for updating counters.
+message CounterI {
+  repeated metrics.Action action = 100;
+}
+
+// CounterO is the output for updating counters.
+message CounterO {
+  repeated metrics.Result result = 100;
+}
