@@ -5,6 +5,8 @@ calls are shaped and function using [Protocol Buffer] definitions. Having a
 unified abstraction helps us to generate client and server code across different
 languages so that we remain mostly independent of transport layer specifics.
 
+![Protocol Buffers](.github/assets/protocol_buffers.png)
+
 ### Metrics
 
 Specta follows a simple [Data Model] for unifying distributed observations as if
