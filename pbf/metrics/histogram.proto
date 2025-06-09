@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package metrics;
+option go_package = "./;metrics";
+
+import "pbf/metrics/common.proto";
+
+// HistogramI is the input for updating histograms.
+message HistogramI {
+  repeated metrics.Action action = 100;
+}
+
+// HistogramO is the output for updating histograms.
+message HistogramO {
+  repeated metrics.Result result = 100;
+}
