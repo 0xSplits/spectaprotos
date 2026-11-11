@@ -18,9 +18,6 @@ on:
       - "**.proto"
   workflow_dispatch:
 
-permissions:
-  contents: read
-
 jobs:
   pbf-lint:
     runs-on: "ubuntu-latest"

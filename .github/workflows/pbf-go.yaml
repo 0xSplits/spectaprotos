@@ -16,9 +16,6 @@ on:
       - "**.proto"
   workflow_dispatch:
 
-permissions:
-  contents: read
-
 jobs:
   pbf-go:
     runs-on: "ubuntu-latest"
