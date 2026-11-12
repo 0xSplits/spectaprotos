@@ -21,10 +21,10 @@ jobs:
     runs-on: "ubuntu-latest"
     steps:
       - name: "Setup Git Project"
-        uses: "actions/checkout@v5"
+        uses: "actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09" # v5
 
       - name: "Setup Typescript Env"
-        uses: "actions/setup-node@v6"
+        uses: "actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38" # v6
         with:
           node-version: "22.x.x"
 
@@ -75,7 +75,7 @@ jobs:
           prettier -w $(find ${{ github.sha }}/0xSplits/spectatscode/src/ -name "*.ts" -o -name "*.tsx")
 
       - name: "Commit And Push"
-        uses: "cpina/github-action-push-to-another-repository@v1.7.3"
+        uses: "cpina/github-action-push-to-another-repository@55306faa4ed53b815ae49e564af8cfb359d32ae2" # v1.7.3
         env:
           SSH_DEPLOY_KEY: "${{ secrets.SSH_DEPLOY_KEY_SPECTATSCODE }}"
         with:
